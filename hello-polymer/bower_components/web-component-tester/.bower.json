@@ -26,12 +26,12 @@
     "webcomponentsjs": "Polymer/webcomponentsjs#^0.5.0"
   },
   "homepage": "https://github.com/Polymer/web-component-tester",
-  "version": "2.2.3",
-  "_release": "2.2.3",
+  "version": "2.2.4",
+  "_release": "2.2.4",
   "_resolution": {
     "type": "version",
-    "tag": "v2.2.3",
-    "commit": "8968ec42b05e6af5b8bb4f5d8c85af9def065d1f"
+    "tag": "v2.2.4",
+    "commit": "bac23ffeab3a64ff15a79b2c9aa42e8dceb5795d"
   },
   "_source": "git://github.com/Polymer/web-component-tester.git",
   "_target": "^2.2.3",
