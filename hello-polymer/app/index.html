@@ -33,13 +33,33 @@
         <core-toolbar>Menu</core-toolbar>
 
         <!-- Drawer Content -->
-        <core-menu selected={{page}} valueattr="nav-item">
+<!--         <core-menu selected={{page}} valueattr="nav-item">
           <core-item nav-item="home" label="Home"></core-item>
           <core-item nav-item="word-search" label="Word Search"></core-item>
           <core-item nav-item="key-words" label="Keywords"></core-item>
           <core-item nav-item="kw-profile" label="Profile"></core-item>
           <core-item nav-item="settings" label="Settings"</core-item>
-        </core-menu>
+        </core-menu> -->
+
+        <more-route-selector>
+          <core-menu>
+            <core-item label="Home" route="home">
+              <a href="{{urlFor('home')}}"></a>
+            </core-item>
+            <core-item label="Word Search" route="wordsearch">
+              <a href="{{urlFor('wordsearch')}}"></a>
+            </core-item>
+            <core-item label="Keywords" route="keywords">
+              <a href="{{urlFor('keywords')}}"></a>
+            </core-item>
+            <core-item label="Profile" route="profile">
+              <a href="{{urlFor('profile')}}"></a>
+            </core-item>
+            <core-item label="Settings" route="settings">
+              <a href="{{urlFor('settings')}}"></a>
+            </core-item>
+          </core-menu>
+        </more-route-selector>
 
       </core-header-panel>
 
@@ -53,27 +73,29 @@
         </core-toolbar>
         <!-- Main Content -->
         <div class="container" fit layout vertical>
-          <core-pages selected={{page}} valueattr="nav-tem" flex>
-            <section nav-tem="home">
-              <div class="hero-unit">
-                <yo-greeting></yo-greeting>
-                <p>You now have</p>
-                <yo-list></yo-list>
-              </div>
-            </section>
-            <section nav-tem="kw-profile">
-              <kw-profile></kw-profile>
-            </section>
-            <section nav-tem="word-search">
-              <h1>Word Search</h1>
-            </section>
-            <section nav-tem="key-words">
-              <h1>Key Words</h1>
-            </section>
-            <section nav-tem="settings">
-              <h1>Settings</h1>
-            </section>
-          </core-pages>
+          <more-route-selector>
+            <core-pages selected={{page}} flex>
+              <section route="home">
+                <div class="hero-unit">
+                  <yo-greeting></yo-greeting>
+                  <p>You now have</p>
+                  <yo-list></yo-list>
+                </div>
+              </section>
+              <section route="profile">
+                <kw-profile></kw-profile>
+              </section>
+              <section route="wordsearch">
+                <h1>Word Search</h1>
+              </section>
+              <section route="keywords">
+                <h1>Key Words</h1>
+              </section>
+              <section route="settings">
+                <h1>Settings</h1>
+              </section>
+            </core-pages>
+          </more-route-selector>
         </div>
       </core-header-panel>
     </core-drawer-panel>
