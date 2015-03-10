@@ -1,4 +1,4 @@
-<link rel="import" href="bower_components/more-routing/more-routing.html">
+<link rel="import" href="../../bower_components/more-routing/more-routing.html">
 
 <more-routing-config driver="hash"></more-routing-config>
 
@@ -6,5 +6,7 @@
 <more-route name="home" path="/"></more-route>
 <more-route name="profile" path="/profile"></more-route>
 <more-route name="wordsearch" path="/wordsearch"></more-route>
-<more-route name="keywords" path="/keywords"></more-route>
+<more-route name="keywords" path="/keywords">
+	<more-route name="keywords-info" path="/:keywords_list_id"></more-route>
+</more-route>
 <more-route name="settings" path="/settings"></more-route>

@@ -32,15 +32,7 @@
         <!-- Drawer Toolbar -->
         <core-toolbar>Menu</core-toolbar>
 
-        <!-- Drawer Content -->
-<!--         <core-menu selected={{page}} valueattr="nav-item">
-          <core-item nav-item="home" label="Home"></core-item>
-          <core-item nav-item="word-search" label="Word Search"></core-item>
-          <core-item nav-item="key-words" label="Keywords"></core-item>
-          <core-item nav-item="kw-profile" label="Profile"></core-item>
-          <core-item nav-item="settings" label="Settings"</core-item>
-        </core-menu> -->
-
+        <!-- Menu -->
         <more-route-selector>
           <core-menu>
             <core-item label="Home" route="home">
@@ -73,7 +65,7 @@
         </core-toolbar>
         <!-- Main Content -->
         <div class="container" fit layout vertical>
-          <more-route-selector>
+          <more-route-selector selectedParams="{{params}}"">
             <core-pages selected={{page}} flex>
               <section route="home">
                 <div class="hero-unit">
@@ -90,6 +82,28 @@
               </section>
               <section route="keywords">
                 <h1>Key Words</h1>
+                <ul>
+                  <li>
+                    <a href="{{urlFor('keywords-info', {keywords_list_id: '123sghd345'})}}">
+                      Key Words List 1
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{urlFor('keywords-info', {keywords_list_id: '123sghd346'})}}">
+                      Key Words List 2
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{urlFor('keywords-info', {keywords_list_id: '123sghd347'})}}">
+                      Key Words List 3
+                    </a>
+                  </li>
+                </ul>
+              </section>
+
+              <section route="keywords-info">
+                <h1>Keywords Info</h1>
+                <h2>Keywords List ID  is {{params.keywords_list_id}}</h2>
               </section>
               <section route="settings">
                 <h1>Settings</h1>
