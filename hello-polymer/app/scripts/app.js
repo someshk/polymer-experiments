@@ -5,7 +5,7 @@
   // and give it some initial binding values
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
-  app.appName = 'Yo, Hello Polymer App!';
+  app.appName = 'Polymer Experiments';
 
   // Set the default page to home
   app.page = 'home';
