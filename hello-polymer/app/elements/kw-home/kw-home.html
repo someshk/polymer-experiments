@@ -3,15 +3,37 @@
 <polymer-element name="kw-home" attributes="">
   <template>
     <link rel="stylesheet" href="kw-home.css">
+
+    <google-client-api on-api-load="{{googleAPILoaded}}"></google-client-api>
+
     <p>
-      <google-signin clientId="384334855036-gou8qpfutdijngd754lngg1cd6r59icg.apps.googleusercontent.com" scopes="profile"></google-signin>
+      <google-signin 
+        clientId="384334855036-gou8qpfutdijngd754lngg1cd6r59icg.apps.googleusercontent.com" scopes="profile"
+        on-google-signin-success="{{signInSuccess}}"
+        on-google-signed-out="{{signOut}}">
+      </google-signin>
     </p>
 
   </template>
   <script>
     (function () {
-      Polymer({
-        // define element prototype here
+      Polymer('kw-home', {
+        num: 2,
+        computed: {
+          square: 'num * num'
+        },
+        googleAPILoaded: function(data) {
+          console.log("Google API is loaded", data);
+          console.log("GAPI Client = ", gapi.client);
+        },
+        signInSuccess: function(data) { 
+          console.log('Successfully signed in. data = ',  data); 
+          console.log('Successfully signed in. Access Token = ', data.detail.result.access_token );
+        },
+        googlePlusAPILoaded: function(data) {
+          console.log("Google+ API loaded", data);
+        },
+        signOut: function(data) { console.log('User signed out'); },
       });
     })();
   </script>
