@@ -1,0 +1,19 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<polymer-element name="app-globals" attributes="">
+  <template>
+    <link rel="stylesheet" href="app-globals.css">
+  </template>
+  <script>
+    (function () {
+      // App Global Variables - these variables are shared with all App elements
+      var appName = 'App Name';
+      Polymer({
+        ready: function() {
+          // copy global values into instance properties
+          this.appName = appName;
+        }
+      });
+    })();
+  </script>
+</polymer-element>
