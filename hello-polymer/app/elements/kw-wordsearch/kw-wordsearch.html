@@ -1,13 +1,30 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="easel-js-import.html">
+<script src="wordsearch-game.js"></script>
 
 <polymer-element name="kw-wordsearch" attributes="">
   <template>
     <link rel="stylesheet" href="kw-wordsearch.css">
+    <p>Word Search Game Canvas</p>
+    <canvas id="gamecanvas">
+      Your browser does not support HTML5 Canvas. Please shift to another browser.
+    </canvas>
   </template>
   <script>
     (function () {
       Polymer({
+        ready: function() {
+          console.log('ready: component initialization finished');
+          console.log('ready: draw the game board');
+          // wordgame.drawGameBoard(this.$.gamecanvas);
+          wordgame.drawBlueCircle(this.$.gamecanvas);
+          console.log("ready: Game board created");
+        },
         // define element prototype here
+        drawOnCanvas: function() {
+          console.log(drawOnCanvas);
+        }
+        // drawOnCanvas();
       });
     })();
   </script>
