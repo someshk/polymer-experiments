@@ -4,18 +4,26 @@
   <template>
     <link rel="stylesheet" href="kw-home.css">
 
-    <google-client-api on-api-load="{{googleAPILoaded}}"></google-client-api>
+    <!-- <google-client-api on-api-load="{{googleAPILoaded}}"></google-client-api> -->
 
     <p>
       <google-signin 
-        clientId="384334855036-gou8qpfutdijngd754lngg1cd6r59icg.apps.googleusercontent.com" scopes="profile"
+        clientId="384334855036-gou8qpfutdijngd754lngg1cd6r59icg.apps.googleusercontent.com" 
+        scopes="profile"
         on-google-signin-success="{{signInSuccess}}"
         on-google-signed-out="{{signOut}}">
       </google-signin>
     </p>
 
+    <!-- Load Google+ API -->
+    <google-api-loader
+      name="plus"
+      version="v1">
+    </google-api-loader>
+
   </template>
   <script>
+    var apiKey = "API_KEY";
     (function () {
       Polymer('kw-home', {
         num: 2,
@@ -23,12 +31,22 @@
           square: 'num * num'
         },
         googleAPILoaded: function(data) {
-          console.log("Google API is loaded", data);
-          console.log("GAPI Client = ", gapi.client);
+          console.log("Google API is loaded:", data);
+          console.log("GAPI Client:", gapi.client);
+          // gapi.client.setApiKey(app.googleAPIKey);
         },
         signInSuccess: function(data) { 
-          console.log('Successfully signed in. data = ',  data); 
-          console.log('Successfully signed in. Access Token = ', data.detail.result.access_token );
+          console.log('signInSuccess: Successfully signed in. data:',  data); 
+          console.log('signInSuccess: gapi:',  gapi); 
+          console.log('Successfully signed in. Access Token:', data.detail.result.access_token);
+
+          // Call the Google Plus API to list the user name
+          var request = gapi.client.plus.people.get({'userId': 'me'});
+          request.execute(function(resp) {
+            console.log("G+ API Response:", resp)
+            console.log("User name:" + resp.displayName);
+            console.log("User Occupation:" + resp.occupation);
+          });
         },
         googlePlusAPILoaded: function(data) {
           console.log("Google+ API loaded", data);
