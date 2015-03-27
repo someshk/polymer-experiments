@@ -1,12 +1,14 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../../bower_components/core-list/core-list.html">
+<link rel="import" href="../../../bower_components/core-image/core-image.html">
+<link rel="import" href="faker-js-import.html">
 
-<polymer-element name="kw-keywords" attributes="">
+<polymer-element name="kw-keywords" layout vertical attributes="">
   <template>
     <link rel="stylesheet" href="kw-keywords.css">
-
     <div main layout vertical>
-      <h1>Key Words</h1>
+<!--       <h1>Key Words</h1>
       <ul>
         <li>
           <a href="{{urlFor('keywords-info', {keywords_list_id: '123sghd345'})}}">
@@ -23,7 +25,26 @@
             Key Words List 3
           </a>
         </li>
-      </ul>
+      </ul> -->
+      <p>{{heading}}</p>
+
+       <div class="content" vertical layout style="height: 800px">
+        <core-list id="list" data="{{keywords}}" flex>
+          <template>
+            <div class="row" layout horizontal center>
+              <core-image class="avatar" 
+                    src="{{model.avatar}}" 
+                    preload 
+                    sizing="cover"
+                    data-index="{{index}}">
+              </core-image>
+              <div data-index="{{index}}">{{model.name}}</div>
+              <div flex>{{model.name}}</div>
+            </div>
+          </template>
+        </core-list>
+      </div>
+
       
       <a href="{{urlFor('add-keywords-set')}}">
             <paper-fab icon="add" noink></paper-fab>
@@ -33,7 +54,24 @@
   <script>
     (function () {
       Polymer({
-        // define element prototype here
+        ready: function() {
+          console.log("kw-keywords: ready");
+          var app = document.querySelector('#app');
+          this.keywords = this.generateContacts();
+          this.heading = "Core List example";
+        },
+
+        generateContacts: function() {
+          var data = [];
+          for(var i = 0; i < 200; i++) {
+            data.push({
+              name: faker.name.findName(),
+              avatar: faker.internet.avatar()
+            });
+          }
+          return data;
+        }
+
       });
     })();
   </script>

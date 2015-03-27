@@ -4,7 +4,7 @@
   <template>
     <link rel="stylesheet" href="kw-home.css">
 
-    <!-- <google-client-api on-api-load="{{googleAPILoaded}}"></google-client-api> -->
+    <google-client-api on-api-load="{{googleClientAPILoaded}}"></google-client-api>
 
     <p>
       <google-signin 
@@ -30,10 +30,19 @@
         computed: {
           square: 'num * num'
         },
-        googleAPILoaded: function(data) {
-          console.log("Google API is loaded:", data);
+        googleClientAPILoaded: function(data) {
+          var ROOT = 'http://localhost:8080/_ah/api';
+          var ROOT_LIVE = 'https://keywords-io.appspot.com/_ah/api';
+          console.log("Google Client API is loaded:", data);
           console.log("GAPI Client:", gapi.client);
           // gapi.client.setApiKey(app.googleAPIKey);
+          gapi.client.load('categories', 'v1', function() {
+             console.log("keywords-io API loaded");
+             // Get the list of categories
+            gapi.client.categories.list({'count':'5'}).execute(function(resp) {
+              console.log(resp);
+            });
+          }, ROOT);
         },
         signInSuccess: function(data) { 
           console.log('signInSuccess: Successfully signed in. data:',  data); 

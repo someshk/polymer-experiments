@@ -7,3 +7,35 @@ paper-fab {
   bottom: 16px;
   right: 16px;
 }
+
+// .content {
+//   background-color: #fff;
+// }
+
+// core-list {
+// 	height: 800px;
+// }
+
+.row {
+	height: 80px;
+	padding: 16px;
+}
+
+.row core-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+core-list .avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-right: 16px;
+	background-color: #00BCD4;
+}
+
+.content {
+  margin: 24px auto;
+  width: 640px;
+}
