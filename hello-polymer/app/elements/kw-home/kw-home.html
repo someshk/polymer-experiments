@@ -36,10 +36,10 @@
           console.log("Google Client API is loaded:", data);
           console.log("GAPI Client:", gapi.client);
           // gapi.client.setApiKey(app.googleAPIKey);
-          gapi.client.load('categories', 'v1', function() {
-             console.log("keywords-io API loaded");
+          gapi.client.load('graceio', 'v1', function() {
+             console.log("grace-io API loaded");
              // Get the list of categories
-            gapi.client.categories.list({'count':'5'}).execute(function(resp) {
+            gapi.client.graceio.categories.list({'count':'5'}).execute(function(resp) {
               console.log(resp);
             });
           }, ROOT);

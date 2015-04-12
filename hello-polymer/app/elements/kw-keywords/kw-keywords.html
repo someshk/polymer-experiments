@@ -31,20 +31,21 @@
        <div class="content" vertical layout style="height: 800px">
         <core-list id="list" data="{{keywords}}" flex>
           <template>
-            <div class="row" layout horizontal center>
-              <core-image class="avatar" 
-                    src="{{model.avatar}}" 
-                    preload 
-                    sizing="cover"
-                    data-index="{{index}}">
-              </core-image>
-              <div data-index="{{index}}">{{model.name}}</div>
-              <div flex>{{model.name}}</div>
-            </div>
+            <a href="{{index}}" on-click="{{navigate}}">
+              <div class="row" layout horizontal center>
+                <core-image class="avatar" 
+                      src="{{model.avatar}}" 
+                      preload 
+                      sizing="cover"
+                      data-index="{{index}}">
+                </core-image>
+                <div data-index="{{index}}">{{model.name}}</div>
+                <div flex>{{model.name}}</div>
+              </div>
+            </a>
           </template>
         </core-list>
       </div>
-
       
       <a href="{{urlFor('add-keywords-set')}}">
             <paper-fab icon="add" noink></paper-fab>

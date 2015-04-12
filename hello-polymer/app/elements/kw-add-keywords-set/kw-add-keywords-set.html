@@ -1,14 +1,55 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../../../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../bower_components/core-menu/core-menu.html">
 
 <polymer-element name="kw-add-keywords-set" attributes="">
   <template>
     <link rel="stylesheet" href="kw-add-keywords-set.css">
-    <h1>New Keyword Set</h1>
+
+    <div class="content">
+      <h1>New Keywords List</h1>
+      <paper-input label="Keywords List Name" floatingLabel></paper-input>
+      <br/>
+      <paper-input label="Description" floatingLabel></paper-input>
+      <br/>
+      <paper-dropdown-menu label="Difficulty Level">
+        <paper-dropdown class="dropdown">
+          <core-menu class="menu">
+            <template repeat="{{difficultyLevels}}">
+              <paper-item>{{}}</paper-item>
+            </template>
+          </core-menu>
+        </paper-dropdown>
+      </paper-dropdown-menu>
+      <br/>
+      <paper-button raised class="colored" on-click="{{addKeywordsList}}">Add</paper-button>
+
+      <!-- Toasts -->
+      <paper-toast id="list_added_toast" class="capsule" text="Keywords list has been added."></paper-toast>
+    </div>
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
+        ready: function() {
+          console.log('ready: component initialization finished');
+          this.difficultyLevels = [
+            'Easy',
+            'Medium',
+            'Hard',
+          ];
+        },
+        addKeywordsList: function() {
+          console.log('addKeywordsList');
+          // Show the Toast
+          this.$.list_added_toast.show();
+        }
       });
     })();
   </script>

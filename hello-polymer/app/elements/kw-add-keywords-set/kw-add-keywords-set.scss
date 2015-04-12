@@ -1,3 +1,13 @@
 :host {
   display: block;
 }
+
+paper-button[raised].colored {
+      background: #4285f4;
+      color: #fff;
+}
+
+.content {
+  margin: 24px auto;
+  width: 640px;
+}
